@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial") 
 
-public class Scene extends JPanel implements Observer{
+public class Scene extends JPanel{
 	
 	public static Scene scene;
 	
@@ -23,13 +23,14 @@ public class Scene extends JPanel implements Observer{
 	
 	private final int BACK_IMAGE_WIDTH = 1280;
 	
+	static String RoadToPlayerImage = "";
+	static String RoadToBotImage = "";
+	
 	public Scene(){
 		
 		
 		super();
-		String RoadToBackImage = "/Images/BackImage.png";
-		String RoadToPlayerImage = Battle.PlayerDraw.toString();
-		String RoadToBotImage = Battle.BotDraw.toString();
+		String RoadToBackImage = "/Images/BackImage.png  ";
 		
 		this.icoBackImage = new ImageIcon(getClass().getResource(RoadToBackImage));
 		this.imgBackImage = this.icoBackImage.getImage();
@@ -51,12 +52,10 @@ public class Scene extends JPanel implements Observer{
 		g.drawImage(this.imgPlayerImage, -500, -500, null);
 		g.drawImage(this.imgBotImage, 500, 500, null);
 	}
-	@Override
-	public void update(Observable Battle, Object BotDraw) { //I just wanted the datas of BotDraw and PlayerDraw to be sent in this object...
-		// TODO Auto-generated method stub
-		
+	public static void setRoadToPlayerImage(String NewRoad){
+		RoadToPlayerImage = NewRoad;
 	}
-	public void update1(Observable Battle, Object PlayerDraw){
-		
+	public static void setRoadToBotImage(String NewRoad){
+		RoadToBotImage = NewRoad;
 	}
 }

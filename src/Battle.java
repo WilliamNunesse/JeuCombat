@@ -1,11 +1,15 @@
 // Here is is time for the battle to begin !
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+
 public class Battle{
 	
 
 	public static StringBuffer BotDraw = new StringBuffer();
 	public static StringBuffer PlayerDraw = new StringBuffer(); //This is going to be useful when drawing our characters based on their previous attack
+	
+	public static String NewRoad;
 	
 	public Battle(){
 		
@@ -37,43 +41,70 @@ public class Battle{
 					HPbot = Character.attack(APplayer, HPbot, false);
 					System.out.println("You did "+APplayer+"dmgs");
 					if(playeridentity == 1){
-						PlayerDraw.insert(7, "HealerAttack.png");
+						PlayerDraw.insert(7, "                    ");
+						PlayerDraw.insert(7, "/Images/HealerAttack.png");
+						NewRoad = PlayerDraw.toString();
+						Scene.setRoadToPlayerImage(NewRoad);
 					}
 					if(playeridentity == 2){
-						PlayerDraw.insert(7, "DamagerAttack.png");
+						PlayerDraw.insert(7, "                    ");
+						PlayerDraw.insert(7, "/Images/DamagerAttack.png");
+						NewRoad = PlayerDraw.toString();
+						Scene.setRoadToPlayerImage(NewRoad);
 					}
 					if(playeridentity == 3){
-						PlayerDraw.insert(7, "TankAttack.png");
+						PlayerDraw.insert(7, "                    ");
+						PlayerDraw.insert(7, "/Images/TankAttack.png");
+						NewRoad = PlayerDraw.toString();
+						Scene.setRoadToPlayerImage(NewRoad);
 					}
 				}
 				if (nextmove == 2){
 					block = Character.block(); //Here we set block on true meaning for the next dmgs he can only take 1 maximum
 					if(playeridentity == 1){
-						PlayerDraw.insert(7, "HealerBlock.png");
+						PlayerDraw.insert(7, "                    ");
+						PlayerDraw.insert(7, "/Images/HealerBlock.png");
+						NewRoad = PlayerDraw.toString();
+						Scene.setRoadToPlayerImage(NewRoad);
 					}
 					if(playeridentity == 2){
-						PlayerDraw.insert(7, "DamagerBlock.png");
+						PlayerDraw.insert(7, "                    ");
+						PlayerDraw.insert(7, "/Images/DamagerBlock.png");
+						NewRoad = PlayerDraw.toString();
+						Scene.setRoadToPlayerImage(NewRoad);
 					}
 					if(playeridentity == 3){
-						PlayerDraw.insert(7, "TankBlock.png");
+						PlayerDraw.insert(7, "                    ");
+						PlayerDraw.insert(7, "/Images/TankBlock.png");
+						NewRoad = PlayerDraw.toString();
+						Scene.setRoadToPlayerImage(NewRoad);
 					}
 				}
 				if(nextmove == 3){
 					if(playeridentity == 1){
 						HPplayer = Healer.specialattack(HPbot);
-						PlayerDraw.insert(7, "HealerSpecial.png");
+						PlayerDraw.insert(7, "                    ");
+						PlayerDraw.insert(7, "vHealerSpecial.png");
+						NewRoad = PlayerDraw.toString();
+						Scene.setRoadToPlayerImage(NewRoad);
 					}
 					if(playeridentity == 2){
 						int[] HP = Damager.specialattack(HPplayer, HPbot);
 						HPplayer = HP[0];
 						HPbot = HP[1];
-						PlayerDraw.insert(7, "DamagerSpecial.png");
+						PlayerDraw.insert(7, "                    ");
+						PlayerDraw.insert(7, "/Images/DamagerSpecial.png");
+						NewRoad = PlayerDraw.toString();
+						Scene.setRoadToPlayerImage(NewRoad);
 					}
 					if(playeridentity == 3){
 						int[] HP = Tank.specialattack(HPplayer, HPbot);
 						HPplayer = HP[0];
 						HPbot = HP[1];
-						PlayerDraw.insert(7, "DamagerSpecial.png");
+						PlayerDraw.insert(7, "                    ");
+						PlayerDraw.insert(7, "/Images/DamagerSpecial.png");
+						NewRoad = PlayerDraw.toString();
+						Scene.setRoadToPlayerImage(NewRoad);
 					}
 				}
 				if (nextmove != 1 && nextmove != 2 && nextmove != 3){ //This is a security so if the user enters say "4" the system will ask him again and again until he chooses 1;2 or 3 (but if you want to bug it just enter anything else than an int)
@@ -83,35 +114,54 @@ public class Battle{
 			if (botdecision == 1){
 				HPplayer = Character.attack(APbot, HPplayer, block);
 				if(IAcharacter.IAcharacterchoice == 1){
-					BotDraw.insert(7, "HealerAttack.png");
+					BotDraw.insert(7, "                    ");
+					BotDraw.insert(7, "/Images/HealerAttack.png");
+					NewRoad = BotDraw.toString();
+					Scene.setRoadToBotImage(NewRoad);
 				}
 				if(IAcharacter.IAcharacterchoice == 2){
-					BotDraw.insert(7, "DamagerAttack.png");
+					BotDraw.insert(7, "                    ");
+					BotDraw.insert(7, "/Images/DamagerAttack.png");
+					NewRoad = BotDraw.toString();
+					Scene.setRoadToBotImage(NewRoad);
 				}
 				if(IAcharacter.IAcharacterchoice == 3){
-					BotDraw.insert(7, "TankAttack.png");
+					BotDraw.insert(7, "                    ");
+					BotDraw.insert(7, "/Images/TankAttack.png");
+					NewRoad = BotDraw.toString();
+					Scene.setRoadToBotImage(NewRoad);
 				}
 			}
 			if (botdecision == 2){
 				if(IAcharacter.IAcharacterchoice == 1){
 					HPbot = Healer.specialattack(HPbot);
-					BotDraw.insert(7, "HealerSpecial.png");
+					BotDraw.insert(7, "                    ");
+					BotDraw.insert(7, "/Images/HealerSpecial.png");
+					NewRoad = BotDraw.toString();
+					Scene.setRoadToBotImage(NewRoad);
 				}
 				if(IAcharacter.IAcharacterchoice == 2){
 					int[] HP = Damager.specialattack(HPbot, HPplayer);
 					HPbot = HP[0];
 					HPplayer = HP[1];
-					BotDraw.insert(7, "DamagerSpecial.png");
+					BotDraw.insert(7, "                    ");
+					BotDraw.insert(7, "/Images/DamagerSpecial.png");
+					NewRoad = BotDraw.toString();
+					Scene.setRoadToBotImage(NewRoad);
 				}
 				if(IAcharacter.IAcharacterchoice == 3){
 					int[] HP = Tank.specialattack(HPbot, HPplayer);
 					HPbot = HP[0];
 					HPplayer = HP[1];
-					BotDraw.insert(7, "TankSpecial.png");
+					BotDraw.insert(7, "                    ");
+					BotDraw.insert(7, "/Images/TankSpecial.png");
+					NewRoad = BotDraw.toString();
+					Scene.setRoadToBotImage(NewRoad);
 				}
 			}
 			nextmove = 0;
 			block = false;
+			
 			System.out.println("You still have : "+HPplayer+"HP left\nYour nemesis still has : "+HPbot+"HP");
 		}
 		if(HPplayer>0 && HPbot<=0){
